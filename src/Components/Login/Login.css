@@ -1,0 +1,10 @@
+.maindiv{
+    background-color: #4158D0;
+    background-image: linear-gradient(180deg, #0700c9 0%, #1151ff 46%, #00d3fd 105%);
+}
+.maindivtwo{
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    min-height: 100vh;
+}
