@@ -4,19 +4,22 @@ import signup from '../../../public/device.json'
 import { RiEyeCloseLine } from 'react-icons/ri';
 import { BsEye } from 'react-icons/bs';
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Slide, ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { userData } from '../../Slices/slice';
 
 const LoginComponents = () => {
   // variables
+  const navigator= useNavigate()
+  const dispatcher = useDispatch()
   const [emaildefault, emailchanger]=useState('')
   const [emailError, emailchangerError]=useState('')
   const [Passworddefault,Passwordchanger]=useState('')
   const [PasswordError,PasswordchangerError]=useState('')
   const [deafault, change]= useState(false)
-
 //  Functions
 const emailMangaer= (e)=>{
   emailchanger(e.target.value)
@@ -41,30 +44,31 @@ const finalSubmit=(e)=>{
     PasswordchangerError('Enter your password!')
   }else{
     signInWithEmailAndPassword(auth, emaildefault, Passworddefault)
-  .then((userCredential) => {
-    // Signed in 
+    .then((userCredential) => {
+    // Signed in
     const user = userCredential.user;
     console.log(user);
-    
-    // ...
-  })
+
+    toast.success ('Login successful!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Slide,
+    });
+    navigator('/')
+    dispatcher(userData(user))
+ })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode);
+
     
   });
-    // toast.success('Login successful!', {
-    //   position: "top-right",
-    //   autoClose: 5000,
-    //   hideProgressBar: true,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: "light",
-    //   transition: Slide,
-    //   });
   }
 }
   return (
