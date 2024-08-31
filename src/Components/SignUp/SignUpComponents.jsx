@@ -79,7 +79,7 @@ const finalSubmit = (e)=>{
            photoURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"
         })
         SetLoader(false)
-        toast.info('Email verification code sent.', {
+        toast.success('Account creation successful!', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -90,7 +90,7 @@ const finalSubmit = (e)=>{
           theme: "light",
           transition: Bounce,
           });
-          navigator('/')
+          navigator('/login')
           sendEmailVerification(auth.currentUser)
           console.log(userCredential);
           
@@ -183,7 +183,7 @@ const finalSubmit = (e)=>{
               :
               <button type='submit' className='w-full h-12 md:h-[64px] bg-gradient-to-r from-[#fff700] to-[#04ff00] duration-75 rounded-[32px] text-lg md:text-[25px] mt-[42px] font-medium text-white active:scale-[1.1]'>Sign Up</button>
               }
-              <p className='font-normal text-sm md:text-[16px] text-[#f7ff18] mt-[30px] items-center'>Already have an account? <span className='font-medium text-[#4ab922] hover:font-bold '><Link to='/'>Login</Link></span></p>
+              <p className='font-normal text-sm md:text-[16px] text-[#f7ff18] mt-[30px] items-center'>Already have an account? <span className='font-medium text-[#4ab922] hover:font-bold '><Link to='/login'>Login</Link></span></p>
             </div>
           </form>
           <div className='hidden md:flex w-full md:w-1/2 flex-col justify-center items-center'>

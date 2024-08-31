@@ -5,7 +5,7 @@ import { RiEyeCloseLine } from 'react-icons/ri';
 import { BsEye } from 'react-icons/bs';
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { Slide, ToastContainer, Zoom, toast } from 'react-toastify';
+import { Bounce, Slide, ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
@@ -49,6 +49,8 @@ const finalSubmit=(e)=>{
     const user = userCredential.user;
     console.log(user);
 
+    localStorage.setItem('majorUserData' , JSON.stringify(user))
+
     toast.success ('Login successful!', {
     position: "top-right",
     autoClose: 5000,
@@ -67,6 +69,19 @@ const finalSubmit=(e)=>{
     const errorCode = error.code;
     const errorMessage = error.message;
 
+    if(errorCode == 'auth/invalid-credential'){
+      toast.error('Email or password is incorrect!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        });
+    }
     
   });
   }

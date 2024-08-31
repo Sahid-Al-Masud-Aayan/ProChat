@@ -15,6 +15,7 @@ const ResetPassword = () => {
     if(!email){
       alert('Please enter your email.')
     }else{
+      alert('Email verification code sent.')
       sendPasswordResetEmail(auth, email)
   .then(() => {
     // Password reset email sent!
@@ -41,7 +42,7 @@ const ResetPassword = () => {
             Enter your email address and we’ll send you a link to reset your password.
           </p>
         </div>
-        <form onSubmit={finalSubmit} className="space-y-6">
+        <form onSubmit={finalSubmit} className="space-y-3">
           <div>
             <label htmlFor="email" className="mt-4 block text-sm font-medium text-gray-700">
               Email address
@@ -65,7 +66,7 @@ const ResetPassword = () => {
             </button>
           
         </form>
-            <Link to='/' className='flex justify-start items-center mt-3 font-semibold text-lg hover:underline '>Go Back to Login</Link>
+            <Link to='/login' className='flex justify-start items-center w-40 mt-3 font-semibold text-lg hover:underline '>Go Back to Login</Link>
       </div>
     </div>
   </>
