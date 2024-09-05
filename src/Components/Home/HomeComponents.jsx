@@ -11,13 +11,13 @@ const HomeComponents = () => {
     <div className="flex justify-center mt-4">
       <img
         className="w-[120px] h-[120px] object-cover rounded-full border-4 border-white"
-        src={currentUserData?.photoURL}
+        src={currentUserData.photoURL}
         alt="Profile"
       />
     </div>
     <div className="p-4 text-center">
-      <h2 className="text-4xl font-semibold text-white">{currentUserData?.displayName}</h2>
-      <p className="text-lg text-gray-300">{currentUserData?.email}</p>
+      <h2 className="text-4xl font-semibold text-white">{currentUserData.displayName}</h2>
+      <p className="text-lg text-gray-300">{currentUserData.email}</p>
     </div>
   </div>
 </div>
