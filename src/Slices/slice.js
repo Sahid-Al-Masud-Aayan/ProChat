@@ -5,7 +5,7 @@ export const counterSlice = createSlice({
   initialState: {
     value: JSON.parse(localStorage.getItem('majorUserData'))?JSON.parse(localStorage.getItem('majorUserData')):null
   },
-  reducers: {
+  reducers: {                                         
     userData: (state, action) => {
       state.value = action.payload
     },

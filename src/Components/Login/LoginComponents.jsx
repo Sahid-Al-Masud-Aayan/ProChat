@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { userData } from '../../Slices/slice';
+import { getDatabase, ref, set } from "firebase/database";
 
 const LoginComponents = () => {
   // variables
@@ -34,6 +35,7 @@ const PasswordManager= (e)=>{
  }
    //firebase functions
    const auth = getAuth();
+   const db = getDatabase();
 
 //submit function
 const finalSubmit=(e)=>{
@@ -64,6 +66,14 @@ const finalSubmit=(e)=>{
     });
     navigator('/')
     dispatcher(userData(user))
+
+    set(ref(db, 'users/'+ user.uid), {
+      UserName: user.displayName,
+      UserImage: user.photoURL,
+      UserEmail: user.email,
+      UserId: user.uid
+    });
+
  })
   .catch((error) => {
     const errorCode = error.code;
@@ -93,7 +103,7 @@ const finalSubmit=(e)=>{
         <div className="flex flex-col md:flex-row justify-between">
           <form onSubmit={finalSubmit} className="w-full md:w-1/2 flex flex-col p-[17px]">
             <div className="flex flex-col justify-center items-center mb-4">
-              <h3 className='font-semibold text-2xl md:text-[40px] text-[#000000] text-center'>Welcome Back</h3>
+              <h3 className='font-semibold text-2xl md:text-[40px] text-[#ffffff] text-center'>Welcome Back</h3>
               <p className='font-normal text-lg md:text-2xl text-[#3b90ff] mb-4 md:mb-8'>We’re so excited to see you again!</p>
             </div>
             <p className='font-normal text-sm md:text-[16px] text-[#70aeff] mb-[7px]'>Email</p>
@@ -118,7 +128,7 @@ const finalSubmit=(e)=>{
           </form>
           <div className='hidden md:flex w-full md:w-1/2 flex-col justify-center items-center'>
             <Lottie className='w-full md:w-[500px] h-[300px] md:h-[500px]' animationData={signup} />
-            <h3 className='font-bold text-2xl md:text-[40px] text-[#000000]'>Log in to your account</h3>
+            <h3 className='font-bold text-2xl md:text-[40px] text-[#ffffff]'>Log in to your account</h3>
             <p className='font-normal text-lg md:text-xl text-[#246fd1] mt-2 mb-8'>To watch your chats, please log in.</p>
           </div>
         </div>
