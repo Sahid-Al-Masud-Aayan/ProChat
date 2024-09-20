@@ -53,6 +53,20 @@ const finalSubmit=(e)=>{
 
     localStorage.setItem('majorUserData' , JSON.stringify(user))
 
+    if(!user.emailVerified){
+      toast.error('Please verify your email.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+        });
+      
+    }else{
     toast.success ('Login successful!', {
     position: "top-right",
     autoClose: 5000,
@@ -63,7 +77,8 @@ const finalSubmit=(e)=>{
     progress: undefined,
     theme: "light",
     transition: Slide,
-    });
+    });}
+      
     navigator('/')
     dispatcher(userData(user))
 
@@ -107,7 +122,9 @@ const finalSubmit=(e)=>{
               <p className='font-normal text-lg md:text-2xl text-[#3b90ff] mb-4 md:mb-8'>We’re so excited to see you again!</p>
             </div>
             <p className='font-normal text-sm md:text-[16px] text-[#70aeff] mb-[7px]'>Email</p>
-            <input onChange={emailMangaer} className='h-12 md:h-[56px] w-full border-[#368dff] border-b-[#4aedff] border-l-[#4aedff] border-[5px] outline-none rounded-xl pl-5' type="email" />
+            <input id="email"
+              name="email"
+               onChange={emailMangaer} className='h-12 md:h-[56px] w-full border-[#368dff] border-b-[#4aedff] border-l-[#4aedff] border-[5px] outline-none rounded-xl pl-5' type="email" />
             <p className='text-xs font-semibold text-[#ff0000]'>{emailError}</p>
             <p className='font-normal text-sm md:text-[16px] text-[#70aeff] mb-[7px] mt-[24px]'>Password</p>
             <div className="relative w-full">
