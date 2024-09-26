@@ -18,7 +18,11 @@ const Friends = () => {
       onValue(starCountRef, (snapshot) => {
         let arrayData = []
         snapshot.forEach((item)=>{
-            arrayData.push({...item.val(), key: item.key})
+          if(item.val().CurrentUserId == ReduxUserData.uid){
+            arrayData.push({friendName:item.val().friendName, friendPhoto:item.val().friendPhoto, key: item.key })
+          }else if(item.val().friendId == ReduxUserData.uid){
+            arrayData.push({friendName:item.val().currentUserName, friendPhoto:item.val().currentUserPhoto, key: item.key})
+          }
         })
         setAllFreinds(arrayData)
   });
@@ -27,11 +31,11 @@ const Friends = () => {
 
   return (
     <div>
-             <h1 className="text-3xl font-bold text-gray-800 mb-8">Friends</h1>
+             <h1 className="text-3xl font-bold text-gray-800 mb-8 w-[300px]">Friends</h1>
             <div className="flex flex-col gap-6 p-3 rounded-xl">
                 {
                           AllFreinds.map((item)=>(
-                          <div key={item.key} className="w-[350px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 ">
+                          <div key={item.key} className="w-[300px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 ">
                     <img
                       src={item.friendPhoto}
                       alt="User 1"

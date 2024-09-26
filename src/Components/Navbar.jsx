@@ -39,13 +39,13 @@ const majorUserData = useSelector((state)=>state.counter.value)
           Profile</NavLink>
       </ul>
       <div className="flex gap-2 justify-center items-center mt-[19.5rem]">
-        <img className='w-10 h-w-10 rounded-full' src={majorUserData.photoURL} alt="Profile picture" />
+        <img className='w-10 h-w-10 rounded-full' src={majorUserData?.photoURL} alt="Profile picture" />
         <h1 className='text-xl font-medium text-white'>
           {majorUserData?.displayName}
         </h1>
       </div>
       <div className="flex justify-center items-center text-[#9e9e9e] text-sm">
-        {majorUserData.email}
+        {majorUserData?.email}
       </div>
     </nav>
     </>

@@ -36,6 +36,8 @@ const UserComponents = () => {
       RecieverUserName: adderdata.UserName,
       RecieverUserImage: adderdata.UserImage
     });
+
+    console.log(adderdata)
     
   }
 
@@ -44,13 +46,13 @@ const UserComponents = () => {
 
       <div className="">
         
-          <h1 className="text-3xl font-bold text-gray-800 mb-8">Connect with others</h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-8 w-[300px]">Connect with others</h1>
         {/* User 1 */}
         <div className="">
           {
             AllUser.map((item)=>(
               <div key={item.key} className="flex flex-col gap-3 p-3 rounded-xl">
-                <div className="w-[350px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 hover:bg-[#6EACDA] duration-200 group">
+                <div className="w-[300px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 hover:bg-[#6EACDA] duration-200 group">
           <img
             src={item.UserImage}
             alt="User 1"
