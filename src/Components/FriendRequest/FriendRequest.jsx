@@ -28,15 +28,21 @@ const FriendRequest = () => {
               const confirmButton = (paraKey)=>{
       // ================ seting data to friends collection 
       set(push(ref(db, 'friends/')), {
+
+        
         currentUserId: majorUserData.uid ,
         currentUserName: majorUserData.displayName ,
         currentUserPhoto: majorUserData.photoURL ,
-        friendId: paraKey.RecieverId,
-        friendName: paraKey.RecieverUserName, 
-        friendPhoto: paraKey.RecieverUserImage,
+
+
+        friendId: paraKey.SenderUserId,
+        friendName: paraKey.SenderUsername , 
+        friendPhoto: paraKey.SenderUserImage,
         
       });
-      console.log(paraKey);
+
+      console.log(paraKey)
+
 
       
       
@@ -53,14 +59,14 @@ const FriendRequest = () => {
     <div>
       <div className="">
         
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 w-[300px]">Friend Requests</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-8 w-[250px]">Friend Requests</h1>
       <div className="">
         
 
                   <div className="flex flex-col gap-6 p-3 rounded-xl">
                 {
                           requestfriend.map((item)=>(
-                          <div key={item.key} className="w-[300px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 ">
+                          <div key={item.key} className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 ">
                     <img
                       src={item.SenderUserImage}
                       alt="User 1"

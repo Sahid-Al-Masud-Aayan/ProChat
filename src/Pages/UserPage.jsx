@@ -2,6 +2,7 @@ import React from 'react'
 import UserComponents from '../Components/Users/UserComponents'
 import FriendRequest from '../Components/FriendRequest/FriendRequest'
 import Friends from '../Components/Friends/Friends'
+import BlockList from '../Components/BlockList'
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <UserComponents/>
       <FriendRequest/>
       <Friends/>
+      <BlockList/>
       
       </div>
     </div>
