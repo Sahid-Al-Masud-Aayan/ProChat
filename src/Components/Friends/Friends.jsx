@@ -22,22 +22,21 @@ const Friends = () => {
     onValue(starCountRef, (snapshot) => {
       let arrayData = [];
       snapshot.forEach((item) => {
-        // if (item.val().currentUserId == ReduxUserData.uid) {
-        //   arrayData.push({
-        //     FriendId: item.val().friendId,
-        //     FriendName: item.val().friendName,
-        //     FriendPhoto: item.val().friendPhoto,
-        //     key: item.key,
-        //   });
-        // } else if (item.val().friendId == ReduxUserData.uid) {
-        //   arrayData.push({
-        //     FriendId: item.val().currentUserId,
-        //     FriendName: item.val().currentUserName,
-        //     FriendPhoto: item.val().currentUserPhoto,
-        //     key: item.key,
-        //   });
-        // }
-        arrayData.push({...item.val(), key: item.key})
+        if (item.val().currentUserId == ReduxUserData.uid) {
+          arrayData.push({
+            FriendId: item.val().friendId,
+            FriendName: item.val().friendName,
+            FriendPhoto: item.val().friendPhoto,
+            key: item.key,
+          });
+        } else if (item.val().friendId == ReduxUserData.uid) {
+          arrayData.push({
+            FriendId: item.val().currentUserId,
+            FriendName: item.val().currentUserName,
+            FriendPhoto: item.val().currentUserPhoto,
+            key: item.key,
+          });
+        }
       });
       setAllFreinds(arrayData);
     });
@@ -65,7 +64,7 @@ const Friends = () => {
         {AllFreinds.map((item) => (
           <div
             key={item.key}
-            className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 "
+            className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg shadow-[0px_8px_20px_10px_#00000024]  duration-200 "
           >
             <img
               src={item.FriendPhoto}
@@ -73,7 +72,7 @@ const Friends = () => {
               className="w-12 h-12 object-cover rounded-full border-2 border-gray-300"
             />
             <div className="ml-4 flex-grow">
-              <h3 className="text-lg font-semibold text-gray-800 group-hover:text-white">
+              <h3 className="text-lg font-semibold text-gray-800 ">
                 {item.FriendName}
               </h3>
             </div>

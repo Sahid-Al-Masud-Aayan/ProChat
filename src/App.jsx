@@ -10,6 +10,8 @@ import ResetPassword from './Pages/ResetPassword'
 import HomePage from './Pages/HomePage'
 import LayoutOne from './Layout/LayoutOne'
 import UserPage from './Pages/UserPage'
+import Chats from './Pages/Chats'
+import MainChat from './Components/MainChat'
 
 function App() {
   const mainRouter = createBrowserRouter(
@@ -21,6 +23,7 @@ function App() {
         <Route path='/' element = {<LayoutOne />} >
         <Route index element ={<HomePage />} />
         <Route path='/people' element ={<UserPage/>} />
+        <Route path='/chats' element ={<MainChat/>} />
       </Route>
         <Route path='*' element={<NotFound/>}/>
       </Route>

@@ -66,7 +66,7 @@ const FriendRequest = () => {
                   <div className="flex flex-col gap-6 p-3 rounded-xl">
                 {
                           requestfriend.map((item)=>(
-                          <div key={item.key} className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 ">
+                          <div key={item.key} className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg shadow-[0px_8px_20px_10px_#00000024] ">
                     <img
                       src={item.SenderUserImage}
                       alt="User 1"

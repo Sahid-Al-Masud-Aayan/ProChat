@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
+import ChatsUsers from '../Components/ChatsUsers'
 
 const LayoutOne = () => {
 
@@ -17,12 +18,14 @@ const LayoutOne = () => {
 
   return (
     <>
-      <div className="flex min-h-screen">
-        <Navbar />
-        <div className="flex-grow flex justify-center items-center">
-          <Outlet />
-        </div>
-      </div>
+<div className="flex min-h-screen">
+  <div className="flex-shrink-0">
+    <Navbar />
+  </div>
+  <div className="flex-grow w-full">
+    <Outlet />
+  </div>
+</div>
 
     </>
   )

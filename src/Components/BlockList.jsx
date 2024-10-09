@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import { getDatabase, onValue, push, ref, remove, set } from "firebase/database";
 import { FiUserPlus } from 'react-icons/fi';
 import { AiOutlineUserAdd, AiOutlineUserDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
 const BlockList = () => {
@@ -32,16 +32,16 @@ const BlockList = () => {
 
   const UNblocker = (info)=>{
     set(push(ref(db, 'friends/')), {
-      SenderUserId: sliceUser.uid,
-      SenderUsername: sliceUser.displayName,
-      SenderUserImage: sliceUser.photoURL,
-      FriendId: info.FriendId,
-      FriendName: info.FriendName,
-      FriendPhoto: info.FriendPhoto
+      currentUserId: sliceUser.uid,
+      currentUserName: sliceUser.displayName,
+      currentUserPhoto: sliceUser.photoURL,
+      friendId: info.FriendId,
+      friendName: info.FriendName,
+      friendPhoto: info.FriendPhoto
     });
+    remove(ref(db, "blockList/"+ info.key))
   }
   
-
   // currentUserId
 
 
@@ -57,7 +57,7 @@ const BlockList = () => {
                   <div className="flex flex-col gap-6 p-3 rounded-xl">
                 {
                           blockList.map((item)=>(
-                          <div key={item.key} className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 duration-200 ">
+                          <div key={item.key} className="w-[250px] h-[60px] flex items-center bg-white p-4 rounded-lg shadow-[0px_8px_20px_10px_#00000024] ">
                     <img
                       src={item.FriendPhoto}
                       alt="User 1"

@@ -7,7 +7,7 @@ import BlockList from '../Components/BlockList'
 const HomePage = () => {
   return (
     <div>
-      <div className="flex gap-8 justify-center">
+      <div className="flex gap-4 justify-center ">
       <UserComponents/>
       <FriendRequest/>
       <Friends/>

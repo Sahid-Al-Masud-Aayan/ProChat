@@ -52,14 +52,14 @@ const UserComponents = () => {
           {
             AllUser.map((item)=>(
               <div key={item.key} className="flex flex-col gap-3 p-3 rounded-xl">
-                <div className="w-[300px] h-[60px] flex items-center bg-white p-4 rounded-lg border-[#37B7C3] border-2 hover:bg-[#6EACDA] duration-200 group">
+                <div className="w-[300px] h-[60px] flex items-center bg-white p-4 rounded-lg shadow-[0px_8px_20px_10px_#00000024] duration-200 group">
           <img
             src={item.UserImage}
             alt="User 1"
             className="w-12 h-12 object-cover rounded-full border-2 border-gray-300"
             />
           <div className="ml-4 flex-grow">
-            <h3 className="text-lg font-semibold text-gray-800 group-hover:text-white">{item.UserName}</h3>
+            <h3 className="text-lg font-semibold text-gray-800">{item.UserName}</h3>
             
           </div>
           <button onClick={()=>AddFriendFunction(item)} className="flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none">
