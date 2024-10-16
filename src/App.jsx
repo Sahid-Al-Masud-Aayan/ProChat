@@ -12,6 +12,7 @@ import LayoutOne from './Layout/LayoutOne'
 import UserPage from './Pages/UserPage'
 import Chats from './Pages/Chats'
 import MainChat from './Components/MainChat'
+import NoFriends from './Pages/NoFriends'
 
 function App() {
   const mainRouter = createBrowserRouter(
@@ -24,6 +25,7 @@ function App() {
         <Route index element ={<HomePage />} />
         <Route path='/people' element ={<UserPage/>} />
         <Route path='/chats' element ={<MainChat/>} />
+        <Route path='/no-friends' element ={<NoFriends/>} />
       </Route>
         <Route path='*' element={<NotFound/>}/>
       </Route>
