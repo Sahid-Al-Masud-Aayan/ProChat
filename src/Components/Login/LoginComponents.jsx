@@ -44,7 +44,8 @@ const finalSubmit=(e)=>{
     emailchangerError('Enter your email!')
   }if(!Passworddefault){
     PasswordchangerError('Enter your password!')
-  }else{
+  }
+  else{
     signInWithEmailAndPassword(auth, emaildefault, Passworddefault)
     .then((userCredential) => {
     // Signed in
@@ -53,7 +54,7 @@ const finalSubmit=(e)=>{
 
     localStorage.setItem('majorUserData' , JSON.stringify(user))
 
-    if(!user.emailVerified){
+    if(user.emailVerified == false){
       toast.error('Please verify your email.', {
         position: "top-right",
         autoClose: 3000,
@@ -66,7 +67,8 @@ const finalSubmit=(e)=>{
         transition: Bounce,
         });
       
-    }else{
+    }
+    else{
     toast.success ('Login successful!', {
     position: "top-right",
     autoClose: 5000,
